@@ -2,8 +2,8 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import './App.css'
 import Header from './components/Header'
-import ExpensesForm from './components/ExpensesForm'
 import Categories from "./components/Categories";
+import AddDepenses from "./components/AddDepenses";
 
 function App() {
 
@@ -12,7 +12,7 @@ function App() {
      <Router>
       <Routes>
         <Route path="/" element={<Header />} />
-        <Route path="/expenses" element={<ExpensesForm />} />
+        <Route path="/expenses" element={<AddDepenses />} />
         <Route path="/categories" element={<Categories />} />
       </Routes>
     </Router>

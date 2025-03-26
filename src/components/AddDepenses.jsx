@@ -1,6 +1,7 @@
-import React from 'react';
+// import React, { useState } from 'react';
 import styled from "styled-components";
 import Header from './Header';
+import { useState } from 'react';
 const StyledDiv=styled.div`
     display: flex;
     align-items: center;
@@ -32,12 +33,19 @@ const StyledDiv=styled.div`
 & button:hover {
     background: #218838;
 }`;
-const ExpensesForm = () => {
+const AddDepenses = ({ onAddDepenses }) => {
+        const [description, setDescription] = useState('');
+        
     return (
         <>
         <Header/>
         <StyledDiv>
-             <input type="text" placeholder="Description" id="description"/>
+        <form action="">
+             <input type="text" 
+             placeholder="Add Depenses" 
+             value={description}
+             onChange={e => setDescription(e.target.value)}
+             id="description"/>
              <input type="number" placeholder="Amount" id="amount"/>
              <select id="category">
             <option value="food">Food</option>
@@ -46,10 +54,17 @@ const ExpensesForm = () => {
             <option value="entertainment">Distraction</option>
             <option value="entertainment">Shopping</option>
         </select>
-        <button>Add Expense</button>
+        <button onClick={() =>{
+            setDescription(' ');
+            onAddDepenses(description);
+        }}>Add Expense</button>
+        </form>
         </StyledDiv>    
+        <p>
+            {description}
+        </p>
         </>    
     );
 };
 
-export default ExpensesForm;
+export default AddDepenses;
