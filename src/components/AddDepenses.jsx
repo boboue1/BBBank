@@ -33,21 +33,29 @@ const StyledDiv=styled.div`
 & button:hover {
     background: #218838;
 }`;
-const AddDepenses = ({ onAddDepenses }) => {
+const AddDepenses = () => {
         const [description, setDescription] = useState('');
-        
+        const [amount, setAmount] = useState('');
+        const [category, setCategory] = useState('');        
     return (
         <>
         <Header/>
         <StyledDiv>
         <form action="">
              <input type="text" 
-             placeholder="Add Depenses" 
+             placeholder="Description" 
              value={description}
-             onChange={e => setDescription(e.target.value)}
+             onChange={(e) => setDescription(e.target.value)}
              id="description"/>
-             <input type="number" placeholder="Amount" id="amount"/>
-             <select id="category">
+             <input type="number" 
+             placeholder="Montant"
+             value={amount}
+             onChange={(e )=> setAmount(e.target.value)}
+              id="amount"/>
+             <select 
+             value={category}
+             onChange={(e) => setCategory(e.target.value)}
+            >
             <option value="food">Food</option>
             <option value="transport">Transport</option>
             <option value="entertainment">Sport</option>
@@ -56,12 +64,16 @@ const AddDepenses = ({ onAddDepenses }) => {
         </select>
         <button onClick={() =>{
             setDescription(' ');
-            onAddDepenses(description);
+            setAmount(' ');
+            setCategory('')
+            // onAddDepenses(description, amount);
         }}>Add Expense</button>
         </form>
         </StyledDiv>    
         <p>
             {description}
+            {amount}
+            {category}
         </p>
         </>    
     );
