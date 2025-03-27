@@ -2,6 +2,8 @@
 import styled from "styled-components";
 import Header from './Header';
 import { useState } from 'react';
+import { createDepense } from "./DepensesList";
+// import { createDepense } from "./DepensesList";
 const StyledDiv=styled.div`
     display: flex;
     align-items: center;
@@ -36,12 +38,35 @@ const StyledDiv=styled.div`
 const AddDepenses = () => {
         const [description, setDescription] = useState('');
         const [amount, setAmount] = useState('');
-        const [category, setCategory] = useState('');        
+        const [category, setCategory] = useState('Food');  
+        const [depense, setDepense] = useState([]);  
+
+        function handleAddClick (){
+            const newDepense = createDepense(description, amount, category);
+            setDepense([...depense, newDepense]);
+            setDescription('');
+            setAmount('');
+            setCategory('food');
+        }
+        
+
+        // function NewDepense({onAdd})  {
+        //     const [description, setDescription] = useState('');
+        // const [amount, setAmount] = useState('');
+        // const [category, setCategory] = useState('Food'); 
+        //     function handleAddClick(){
+        //         setDescription(' '),
+        //         setAmount(' '),
+        //         setCategory('');
+        //         onAdd(createDepense(description, amount, category));
+        //     }
+        // }   
+       
     return (
         <>
         <Header/>
         <StyledDiv>
-        <form action="">
+        {/* <form action=""> */}
              <input type="text" 
              placeholder="Description" 
              value={description}
@@ -58,23 +83,30 @@ const AddDepenses = () => {
             >
             <option value="food">Food</option>
             <option value="transport">Transport</option>
-            <option value="entertainment">Sport</option>
+            <option value="fitness">Sport</option>
             <option value="entertainment">Distraction</option>
-            <option value="entertainment">Shopping</option>
+            <option value="clothes">Shopping</option>
         </select>
-        <button onClick={() =>{
-            setDescription(' ');
-            setAmount(' ');
-            setCategory('')
-            // onAddDepenses(description, amount);
-        }}>Add Expense</button>
-        </form>
+        <button onClick={handleAddClick}>Add Expense</button>
+        {/* </form> */}
         </StyledDiv>    
-        <p>
-            {description}
-            {amount}
-            {category}
-        </p>
+        
+        <ul>
+{depense.map((depense, index) => (
+  <li key={index}>
+    {depense.description} - {depense.amount}€ ({depense.category})
+  </li>
+))}
+</ul>
+        
+        {/* <NewDepense onAdd={newDepense => setDepense([...depenses, newDepense])} />
+      <ul>
+        {visibleTodos.map(todo => (
+          <li key={todo.id}>
+            {todo.completed ? <s>{todo.text}</s> : todo.text}
+          </li>
+        ))}
+      </ul> */}
         </>    
     );
 };
