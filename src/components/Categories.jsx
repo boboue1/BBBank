@@ -8,6 +8,7 @@ const Categories = () => {
             <p>
                 Listes des catégories
             </p>
+
         </div>
         </>
     );

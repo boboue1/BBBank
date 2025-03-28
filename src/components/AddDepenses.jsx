@@ -49,18 +49,6 @@ const AddDepenses = () => {
             setCategory('food');
         }
         
-
-        // function NewDepense({onAdd})  {
-        //     const [description, setDescription] = useState('');
-        // const [amount, setAmount] = useState('');
-        // const [category, setCategory] = useState('Food'); 
-        //     function handleAddClick(){
-        //         setDescription(' '),
-        //         setAmount(' '),
-        //         setCategory('');
-        //         onAdd(createDepense(description, amount, category));
-        //     }
-        // }   
        
     return (
         <>
@@ -99,14 +87,7 @@ const AddDepenses = () => {
 ))}
 </ul>
         
-        {/* <NewDepense onAdd={newDepense => setDepense([...depenses, newDepense])} />
-      <ul>
-        {visibleTodos.map(todo => (
-          <li key={todo.id}>
-            {todo.completed ? <s>{todo.text}</s> : todo.text}
-          </li>
-        ))}
-      </ul> */}
+    
         </>    
     );
 };
